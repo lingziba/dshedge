@@ -1,6 +1,6 @@
 {
   "name": "dsh-edge-browser",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "description": "让 DSH 直接驱动本机 Microsoft Edge：CDP 启动/接管、开标签、导航、执行 JS、取正文、截图、点击、输入。零依赖 Host 插件。",
   "type": "module",
