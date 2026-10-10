@@ -23,8 +23,16 @@
     }
   },
   "scripts": {
-    "smoke": "node test/smoke.mjs"
+    "smoke": "node test/smoke.mjs",
+    "definitions": "node test/definitions.mjs",
+    "build-check": "node test/build-check.mjs",
+    "live": "node test/live.mjs"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lingziba/dshedge.git"
+  },
+  "homepage": "https://github.com/lingziba/dshedge#readme",
   "engines": {
     "node": ">=20"
   },
