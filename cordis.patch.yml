@@ -1,0 +1,23 @@
+# dsh-edge-browser — bundle patch layer.
+#
+# 插入 Host 插件行 `edge-browser`：它向工具注册表贡献 edge_* 工具，
+# 让 DSH 直接驱动本机 Microsoft Edge（通过 --remote-debugging-port + CDP）。
+#
+# 该行是 Host 面（全局）注册，所有预设的 agent 都能看到这些工具。
+# 可选配置（全部可省略）：
+#   port: 9222                        Edge 调试端口
+#   executablePath: 'C:\...\msedge.exe'  Edge 可执行文件；省略则自动探测
+#   userDataDir: 'C:\...\profile'     专用配置目录；省略则用 %LOCALAPPDATA%\dsh-edge-browser\profile
+#   headless: false                   默认弹可见窗口；true 则无头运行
+#   defaultTimeoutMs: 30000           单个 CDP 操作默认超时
+# 行名用相对 specifier `./lib/entry-<构建号>.js`：
+# Loader 对以 "." 开头的名字按本 patch 层自己的 baseUrl（即本 bundle 目录）解析，
+# 因此它指向真正的入口文件；而每个构建换一个文件名，就让 Loader 必须重新 import，
+# 不必重启 DSH 进程即可换掉已缓存的旧模块。入口内部再用 `?b=` 让依赖也换身份。
+- insert:
+    - id: edge-browser
+      name: './lib/entry-1.0.3.js'
+      config:
+        port: 9222
+        headless: false
+        defaultTimeoutMs: 30000
