@@ -39,19 +39,32 @@ DSH agent  ──edge_* 工具──▶  插件（Host 进程）  ──CDP─�
 
 ## 安装
 
-```text
-plugin_manager  install_bundle  target=<本目录绝对路径>
+拿到代码（二选一）：
+
+```powershell
+git clone https://github.com/lingziba/dshedge.git D:\dsh-plugins\dshedge
+# 或网页上 Code → Download ZIP，解压到同一位置
 ```
 
-安装即写入 profile 的 bundle 列表并插入 Host 行 `edge-browser`；HMR 下立即生效（新会话可见工具）。
+装进 DSH profile：
+
+```text
+plugin_manager  install_bundle  target=D:\dsh-plugins\dshedge
+```
+
+装完让 agent 跑一次 `edge_status`：看到 `插件构建：1.0.4` 和 Edge 版本就成了。
+不想启动浏览器也可以先跑 `node test/definitions.mjs`（期望 20/20，秒级，会校验 schema 是否被当前 DSH 接受）。
+
+目录请放在**之后不会移动**的位置——profile 里记录的是该目录的绝对 link 路径，移动后重新安装一次即可。
+卸载：`plugin_manager remove_bundle target=dsh-edge-browser`（target 是**包名**，不是仓库名）。
 
 ## 配置（bundle 行 `config`，全部可省略）
 
 | 字段 | 默认 | 说明 |
 | --- | --- | --- |
 | `port` | `9222` | Edge 调试端口 |
-| `executablePath` | 自动探测 | `msedge.exe` 路径；也认环境变量 `DSH_EDGE_PATH` |
-| `userDataDir` | `%LOCALAPPDATA%\dsh-edge-browser\profile` | 专用配置目录 |
+| `executablePath` | 自动探测 | Windows / macOS / Linux 常见安装位置 + `PATH`；也可用环境变量 `DSH_EDGE_PATH` 覆盖 |
+| `userDataDir` | 按平台 | Windows `%LOCALAPPDATA%`、macOS `~/Library/Application Support`、Linux `$XDG_STATE_HOME` 下的 `dsh-edge-browser/profile` |
 | `headless` | `false` | 默认弹可见窗口 |
 | `windowSize` | — | 例如 `1440,900` |
 | `defaultTimeoutMs` | `30000` | 单个 CDP 操作默认超时 |
