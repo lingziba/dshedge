@@ -16,7 +16,7 @@
 # 不必重启 DSH 进程即可换掉已缓存的旧模块。入口内部再用 `?b=` 让依赖也换身份。
 - insert:
     - id: edge-browser
-      name: './lib/entry-1.0.3.js'
+      name: './lib/entry-1.0.4.js'
       config:
         port: 9222
         headless: false
