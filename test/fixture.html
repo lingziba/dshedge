@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <title>dsh-edge-browser 验证页</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 32px; max-width: 720px; }
+    button, input { font-size: 16px; padding: 6px 10px; }
+    #log { margin-top: 16px; color: #0a6; }
+    .lead { color: #444; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Edge 控制验证页</h1>
+  <p class="lead">这段文字用于校验 edge_text 的正文提取。</p>
+
+  <p>
+    <button id="counter" type="button">点击计数 0</button>
+    <a id="link" href="#target">可见链接文本</a>
+  </p>
+
+  <p>
+    <label for="q">搜索词</label>
+    <input id="q" name="q" type="text" value="" placeholder="在这里输入">
+  </p>
+
+  <pre id="target">anchor</pre>
+  <div id="log">未点击</div>
+
+  <script>
+    let count = 0
+    document.getElementById('counter').addEventListener('click', () => {
+      count += 1
+      document.getElementById('counter').textContent = '点击计数 ' + count
+      document.getElementById('log').textContent = '按钮已点击 ' + count + ' 次'
+    })
+    window.__state = { ready: true, items: ['a', 'b', 'c'], n: 42 }
+    window.__sum = (list) => list.reduce((acc, value) => acc + value, 0)
+  </script>
+</body>
+</html>
