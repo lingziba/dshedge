@@ -1,5 +1,7 @@
 # dsh-edge-browser
 
+> 项目仓库：https://github.com/lingziba/dshedge （包名 `dsh-edge-browser`，项目名 `dshedge`）
+
 让 DSH 直接驱动**本机 Microsoft Edge**：启动/接管浏览器、开标签页、导航、执行 JS、
 读正文、截图、点击、输入。零第三方依赖（只用 `node:` 内置模块 + 自实现的 WebSocket 客户端）。
 
