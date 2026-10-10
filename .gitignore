@@ -1,0 +1,9 @@
+# 依赖（本插件零依赖，但真跑起来 pnpm 可能建 node_modules）
+node_modules/
+
+# 自测产生的临时产物：Edge 专用配置目录 + 截图
+test/tmp/
+*.log
+
+# 探针目录
+.tmp*/
