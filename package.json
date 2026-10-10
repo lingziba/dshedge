@@ -1,0 +1,41 @@
+{
+  "name": "dsh-edge-browser",
+  "version": "1.0.3",
+  "private": true,
+  "description": "让 DSH 直接驱动本机 Microsoft Edge：CDP 启动/接管、开标签、导航、执行 JS、取正文、截图、点击、输入。零依赖 Host 插件。",
+  "type": "module",
+  "main": "lib/plugin.js",
+  "exports": {
+    ".": {
+      "default": "./lib/plugin.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "test",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "smoke": "node test/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "browser",
+    "edge",
+    "cdp",
+    "automation"
+  ],
+  "license": "MIT"
+}
